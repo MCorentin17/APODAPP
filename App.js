@@ -1,6 +1,8 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View, Button, Image } from "react-native";
 import { useState } from "react";
+import BottomTab  from "./components/BottomTab";
+
 
 export default function App() {
   const [img, setImg] = useState("");
@@ -21,15 +23,14 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Image 
-        source={{ uri: img }} 
-        style={styles.img} />
+      <Image source={{ uri: img }} style={styles.img} />
       <Button
         onPress={getPict}
         title="New Picture"
         color="#841584"
         accessibilityLabel="Learn more about this purple button"
       />
+      <BottomTab  />
       <StatusBar style="auto" />
     </View>
   );
@@ -45,6 +46,11 @@ const styles = StyleSheet.create({
   img: {
     width: "80%",
     height: "45%",
-    marginBottom: '5%',
+    marginBottom: "5%",
+    marginTop: "10%"
   },
+  tabbar: {
+    flex: 1,
+    alignItems: "center",
+  }
 });

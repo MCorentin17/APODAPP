@@ -40,7 +40,7 @@ function SearchScreen() {
 export default function BottomTab() {
   const [index, setIndex] = useState(0); // utilisation de l'état avec useState pour gérer l'index de la navigation
   const [routes] = useState([
-    { key: 'home', title: 'Home', icon: 'home' },
+    { key: 'home', title: 'Home', icon: 'home-outline' },
     { key: 'list', title: 'List', icon: 'view-list-outline' },
     { key: 'search', title: 'Search', icon: 'calendar-search' },
   ]); // utilisation de l'état avec useState pour stocker les différentes routes de navigation

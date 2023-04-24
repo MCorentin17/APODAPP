@@ -75,7 +75,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    height: '10%',
-    width: '10%'
+    padding: 10 ,// Ajout d'un padding pour éviter que le contenu ne soit trop près des bords de l'écran
   },
 });

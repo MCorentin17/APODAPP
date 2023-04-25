@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { Appbar, BottomNavigation } from 'react-native-paper'; // import des composants Appbar et BottomNavigation de react-native-paper
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'; // import du composant Icon de react-native-vector-icons
+import Feed  from './Feed';
 
 // fonction pour l'écran d'accueil "Home"
 function HomeScreen() {
@@ -9,6 +10,8 @@ function HomeScreen() {
     <View style={styles.screen}>
       <Appbar.Header>
         <Appbar.Content title="Home" />
+        <Feed />
+        <Text>Home</Text>
       </Appbar.Header>
     </View>
   );
@@ -20,6 +23,7 @@ function ListScreen() {
     <View style={styles.screen}>
       <Appbar.Header>
         <Appbar.Content title="List" />
+        <Text>List</Text>
       </Appbar.Header>
     </View>
   );
@@ -31,6 +35,7 @@ function SearchScreen() {
     <View style={styles.screen}>
       <Appbar.Header>
         <Appbar.Content title="Search" />
+        <Text>Search</Text>
       </Appbar.Header>
     </View>
   );
@@ -52,7 +57,7 @@ export default function BottomTab() {
   }); // création d'un objet avec les différentes scènes de navigation
 
   return (
-    <View style={styles.container}>
+    
       <BottomNavigation
         navigationState={{ index, routes }} // configuration de la navigation avec l'index et les routes
         onIndexChange={setIndex} // gestion de l'index lorsqu'il change
@@ -62,7 +67,7 @@ export default function BottomTab() {
           <Icon name={route.icon} color={color} size={26} />
         )}
       />
-    </View>
+    
   );
 }
 

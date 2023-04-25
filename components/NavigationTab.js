@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, ScrollView, Screen } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import { Appbar, BottomNavigation } from "react-native-paper"; // import des composants Appbar et BottomNavigation de react-native-paper
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"; // import du composant Icon de react-native-vector-icons
-import Feed from "./Feed";
+import List from "./ListPage";
+import Home from "./HomePage"
 import { SafeAreaView } from "react-native-safe-area-context"; // import des composants pour gérer les zones sécurisées
 
 // fonction pour l'écran d'accueil "Home"
@@ -13,7 +14,7 @@ function HomeScreen() {
       <Appbar.Header>
         <Appbar.Content title="Home" />
       </Appbar.Header>
-      <Feed style={styles.img} />
+      <Home style={styles.img} />
     </SafeAreaView>
   );
 }
@@ -26,6 +27,7 @@ function ListScreen() {
       <Appbar.Header>
         <Appbar.Content title="List" />
       </Appbar.Header>
+      <List style={styles.img} />
     </SafeAreaView>
   );
 }

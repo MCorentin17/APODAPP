@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     fontSize: 20, 
     fontWeight: 'bold', 
     marginTop: 20, 
-    textAlign: 'center', // Texte centré horizontalement
+    textAlign: 'center', 
   flexWrap: 'wrap',
   },
   text: {

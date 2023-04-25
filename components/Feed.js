@@ -74,7 +74,6 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     backgroundColor: "#fff",
-    justifyContent: "center",
   }
 });
 

@@ -3,16 +3,17 @@ import { StyleSheet, View, Text, ScrollView, Screen } from "react-native";
 import { Appbar, BottomNavigation } from "react-native-paper"; // import des composants Appbar et BottomNavigation de react-native-paper
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"; // import du composant Icon de react-native-vector-icons
 import Feed from "./Feed";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context"; // import des composants pour gérer les zones sécurisées
+import { SafeAreaView } from "react-native-safe-area-context"; // import des composants pour gérer les zones sécurisées
 
 // fonction pour l'écran d'accueil "Home"
 function HomeScreen() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
+      <Text style={styles.title}>APODAPP</Text>
       <Appbar.Header>
         <Appbar.Content title="Home" />
       </Appbar.Header>
-        <Feed style={styles.img} />
+      <Feed style={styles.img} />
     </SafeAreaView>
   );
 }
@@ -21,6 +22,7 @@ function HomeScreen() {
 function ListScreen() {
   return (
     <SafeAreaView style={styles.screen}>
+      <Text style={styles.title}>APODAPP</Text>
       <Appbar.Header>
         <Appbar.Content title="List" />
       </Appbar.Header>
@@ -32,10 +34,11 @@ function ListScreen() {
 function SearchScreen() {
   return (
     <SafeAreaView style={styles.screen}>
+      <Text style={styles.title}>APODAPP</Text>
       <Appbar.Header>
         <Appbar.Content title="Search" />
       </Appbar.Header>
-      </SafeAreaView>
+    </SafeAreaView>
   );
 }
 
@@ -77,7 +80,10 @@ const styles = StyleSheet.create({
   },
   img: {
     flex: 1,
-    justifyContent: "center",
+  },
+  title: {
+    backgroundColor: "thistle",
+    fontFamily: "serif",
     alignItems: "center",
-  }
+  },
 });

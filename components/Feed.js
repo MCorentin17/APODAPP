@@ -64,21 +64,16 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'; // import d
 // Styles pour les composants
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "red",
-    alignItems: "center",
-    justifyContent: "center",
+   flex : 1,
   },
   img: {
     width: "80%",
-    height: 200,
+    height: 500,
     marginBottom: 20,
-    marginTop: 40,
+    marginLeft: 40,
   },
   scrollView: {
-    flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
     justifyContent: "center",
   }
 });

@@ -1,16 +1,19 @@
-import React from 'react';
-import { StyleSheet, Image, ScrollView } from "react-native";
+import React from "react";
+import { StyleSheet, Image, ScrollView, Text } from "react-native";
 import { useState, useEffect, useRef } from "react"; // import des hooks
 import { Api } from "../data/Api"; // import de la fonction Api depuis le fichier Api.js
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context"; // import des composants pour gérer les zones sécurisées
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'; // import d'une icône
+import Icon from "react-native-vector-icons/MaterialCommunityIcons"; // import d'une icône
 
-
- export default function Feed(){
- 
- // Initialisation d'un tableau vide d'images, contenant trois objets pour l'exemple
- const [imgList, setImgList] = useState([
-    { id: 0, url: "https://api.nasa.gov/planetary/apod?api_key=oSYEis9hTQWp8hcqfoR1wPqkcoAxQcQGEYUhsiO2", date: "" },
+export default function Feed() {
+  // Initialisation d'un tableau vide d'images, contenant trois objets pour l'exemple
+  const [imgList, setImgList] = useState([
+    {
+      id: 0,
+      url:
+        "https://api.nasa.gov/planetary/apod?api_key=oSYEis9hTQWp8hcqfoR1wPqkcoAxQcQGEYUhsiO2",
+      date: "",
+    },
   ]);
   // Initialisation d'une référence pour chaque image, afin de pouvoir mesurer leur taille une fois chargées
   const imgRefs = useRef([]);
@@ -28,6 +31,8 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'; // import d
       const newImgList = data.map((item, index) => ({
         id: index,
         url: item.url,
+        title: item.title,
+        date: item.date, // Ajout de la propriété date
       }));
       setImgList(newImgList);
       // Création d'une référence pour chaque image
@@ -37,25 +42,27 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'; // import d
     });
   };
 
-
   // Fonction pour afficher la liste d'images
   const renderImgList = () => {
     return imgList.map((img, index) => (
-      <Image
-        ref={imgRefs.current[index]} // Utilisation de la référence pour chaque image
-        source={{ uri: img.url }}
-        key={img.id}
-        style={styles.img}
-      />
+        <React.Fragment key={img.id}>
+          <Text style={styles.title}> {img.title}</Text>
+        <Image
+          ref={imgRefs.current[index]}
+          source={{ uri: img.url }}
+          style={styles.img}
+        />
+        <Text style={styles.text}>Image du {img.date} :</Text>
+      </React.Fragment>
     ));
   };
 
   return (
-    <SafeAreaProvider >
+    <SafeAreaProvider>
       <SafeAreaView style={{ flex: 1 }}>
-      <ScrollView contentContainerStyle={styles.scrollView}>
-        {renderImgList()}
-      </ScrollView>
+        <ScrollView contentContainerStyle={styles.scrollView}>
+          {renderImgList()}
+        </ScrollView>
       </SafeAreaView>
     </SafeAreaProvider>
   );
@@ -64,16 +71,27 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'; // import d
 // Styles pour les composants
 const styles = StyleSheet.create({
   container: {
-   flex : 1,
+    flex: 1,
+  },
+  scrollView: {
+    backgroundColor: "#fff",
+    alignItems: "center"
   },
   img: {
     width: "80%",
     height: 500,
-    marginBottom: 20,
-    marginLeft: 40,
   },
-  scrollView: {
-    backgroundColor: "#fff",
-  }
+  title: {
+    fontFamily: 'serif',
+    fontSize: 20, 
+    fontWeight: 'bold', 
+    marginTop: 20, 
+    textAlign: 'center', // Texte centré horizontalement
+  flexWrap: 'wrap',
+  },
+  text: {
+    fontFamily: 'serif',
+    justifyContent: 'center',
+    marginBottom: 20,
+  },
 });
-

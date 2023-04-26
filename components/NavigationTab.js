@@ -14,7 +14,7 @@ function HomeScreen() {
       <Appbar.Header>
         <Appbar.Content title="Home" />
       </Appbar.Header>
-      <Home style={styles.img} />
+      <Home />
     </SafeAreaView>
   );
 }
@@ -22,12 +22,12 @@ function HomeScreen() {
 // fonction pour l'écran de liste "List"
 function ListScreen() {
   return (
-    <SafeAreaView style={styles.screen}>
+    <SafeAreaView style={{flex :1}}>
       <Text style={styles.title}>APODAPP</Text>
       <Appbar.Header>
         <Appbar.Content title="List" />
       </Appbar.Header>
-      <List style={styles.img} />
+      <List />
     </SafeAreaView>
   );
 }
@@ -35,7 +35,7 @@ function ListScreen() {
 // fonction pour l'écran de recherche "Search"
 function SearchScreen() {
   return (
-    <SafeAreaView style={styles.screen}>
+    <SafeAreaView style={{flex :1}}>
       <Text style={styles.title}>APODAPP</Text>
       <Appbar.Header>
         <Appbar.Content title="Search" />
@@ -67,22 +67,13 @@ export default function BottomTab() {
       barStyle={styles.bottomNavigation} // style de la barre de navigation
       renderIcon={(
         { route, color } // affichage de l'icône correspondante à la route
-      ) => <Icon name={route.icon} color={color} size={26} />}
+      ) => <Icon name={route.icon} color={color} size={28} />}
     />
   );
 }
 
 // styles pour les différents éléments du composant
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  screen: {
-    flex: 1,
-  },
-  img: {
-    flex: 1,
-  },
   title: {
     backgroundColor: "thistle",
     fontFamily: "serif",

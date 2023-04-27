@@ -1,3 +1,10 @@
+# Description
+
+Project carried out for a technical interview requiring a mobile application.
+
+This application was carried out alone and in 4 days.
+Project submitted on 04-28-2023
+
 # APODAPP
 
 APODAPP is a React Native application built with Expo that allows users to view daily astronomy pictures and their explanations from NASA's Astronomy Picture of the Day (APOD) API.
@@ -38,5 +45,6 @@ This application was developed by Corentin MONVILLERS.
 ## Roadmap
 
 - Future improvements for APODAPP include adding a default state for the search button to return to the default calendar;
-- Improving the overall design.
+- Improving the overall design and optimize UX/UI
 - Add unit and integration testing to ensure code quality and facilitate long-term maintenance.
+- Test accessibility

@@ -3,11 +3,11 @@ import { Image, ScrollView, Text, TouchableOpacity } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { getPict } from "../data/Api";
-import styles from "../styles/HomePage.styles";
+import styles from "../styles/HomeScreen.styles";
 
 Icon.loadFont();
 
-export default function HomePage() {
+export default function HomeScreen() {
   const [imgList, setImgList] = useState([
     {
       id: 0,

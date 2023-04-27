@@ -19,10 +19,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     textAlign: "center",
     flexWrap: "wrap",
-    borderTopColor: "black",
-    borderTopWidth: 3,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
+   
   },
   date: {
     fontFamily: "serif",
@@ -40,10 +37,15 @@ const styles = StyleSheet.create({
   read: {
     textAlign: "center",
     fontWeight: "bold",
-    borderBottomColor: "black",
-    borderBottomWidth: 3,
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
+    color: '#fff',
+    fontWeight: 'bold',
+    backgroundColor: 'purple',
+    borderRadius: 5,
+    alignSelf: 'center',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    marginTop: 10,
+    marginBottom: 10,
   },
 });
 

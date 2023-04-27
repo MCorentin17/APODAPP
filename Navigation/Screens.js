@@ -63,9 +63,12 @@ export default function BottomTab() {
     barStyle={{ backgroundColor: 'rgb(11, 61, 145)' }}
     activeColor="white"
     inactiveColor="white"
-    renderIcon={({ route }) => (
-      <Icon name={route.icon} size={28} color="white" />
-    )}
+   renderIcon={({ route, focused }) => (
+  <Icon
+    name={route.icon}
+    size={29}
+    color={focused ? "black" : "white"}
   />
-  );
+)}
+/>)
 }

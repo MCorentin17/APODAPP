@@ -6,6 +6,7 @@ import {
   View,
   TouchableOpacity,
   Modal,
+  ActivityIndicator,
 } from "react-native";
 import { useEffect } from "react";
 import { getPict } from "../data/Api";
@@ -30,11 +31,13 @@ export default function ListScreen() {
   useEffect(() => {
     getPict().then((newImgList) => {
       setImgList(newImgList);
+      setIsLoading(false); // Set isLoading to false after the data is fetched
     });
   }, []);
 
 
-
+// State to indicate if the data is being fetched from the API
+const [isLoading, setIsLoading] = useState(true);
  // State to control the visibility of the image modal
 const [modalVisible, setModalVisible] = useState(false);
 // State to hold the URL of the image that was selected to view in the modal
@@ -57,7 +60,8 @@ setModalVisible(true);
       <TouchableOpacity key={img.id} onPress={() => handleImagePress(img.url)}>
         <React.Fragment>
           <Text style={styles.title}>{img.title}</Text>
-          <Image source={{ uri: img.url }} style={styles.img} />
+          {/* Display an ActivityIndicator while the data is being fetched */}
+        {isLoading ? <ActivityIndicator size={70} color="darkblue" /> : <Image source={{ uri: img.url }} style={styles.img} />}
           <Text style={styles.date}>{img.date}</Text>
         </React.Fragment>
       </TouchableOpacity>

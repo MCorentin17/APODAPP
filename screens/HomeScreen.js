@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Image, ScrollView, Text, TouchableOpacity, Share } from "react-native";
+import { Image, ScrollView, Text, TouchableOpacity, Share, ActivityIndicator } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { getPict } from "../data/Api";
 import styles from "../styles/HomeScreen.styles";
@@ -21,10 +21,14 @@ export default function HomeScreen() {
   // State to control the expansion of the explanation text
   const [isExpanded, setIsExpanded] = useState(false);
 
+  // State to indicate if the data is being fetched from the API
+  const [isLoading, setIsLoading] = useState(true);
+
   // Fetch the list of images on component mount
   useEffect(() => {
     getPict().then((newImgList) => {
       setImgList(newImgList);
+      setIsLoading(false); // Set isLoading to false after the data is fetched
     });
   }, []);
 
@@ -56,7 +60,8 @@ export default function HomeScreen() {
       // View of the HomeScreen that displays the fetched image
       <React.Fragment key={img.id}>
         <Text style={styles.title}> {img.title}</Text>
-        <Image source={{ uri: img.url }} style={styles.img} />
+        {/* Display an ActivityIndicator while the data is being fetched */}
+        {isLoading ? <ActivityIndicator size={70} color="darkblue" /> : <Image source={{ uri: img.url }} style={styles.img} />}
         <Text style={styles.date}>{img.date}</Text>
         <TouchableOpacity onPress={() => setIsExpanded(!isExpanded)}>
           {/* Display the explanation text with the ability to expand/collapse */}

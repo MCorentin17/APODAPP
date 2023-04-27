@@ -49,14 +49,18 @@ const styles = StyleSheet.create({
   },
   shareButton: {
     position: 'absolute',
-    top: 120,
+    top: 420,
     right: 10,
     backgroundColor: "rgb(11, 61, 145)",
     borderRadius: 5,
     color: "#fff",
     paddingHorizontal: 5,
     paddingVertical: 5,
+    alignItems: "center",
   },
+  share:{
+    color: "white", 
+  }
 });
 
 export default styles;

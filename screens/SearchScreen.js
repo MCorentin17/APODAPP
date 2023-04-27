@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { Calendar } from "react-native-calendars";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { getPictByDate } from "../data/Api";
 import styles from "../styles/SearchScreen.styles";
 
-Icon.loadFont();
+
 
 export default function SearchScreen() {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -37,7 +36,7 @@ export default function SearchScreen() {
       <React.Fragment key={img.id}>
         <Text style={styles.title}> {img.title}</Text>
         <Image source={{ uri: img.url }} style={styles.img} />
-        <Text style={styles.date}>Image du {img.date} :</Text>
+        <Text style={styles.date}>{img.date}</Text>
         <TouchableOpacity onPress={() => setIsExpanded(!isExpanded)}>
           <Text
             numberOfLines={isExpanded ? null : 2}
@@ -56,7 +55,7 @@ export default function SearchScreen() {
   return (
     <SafeAreaProvider>
       <SafeAreaView >
-        <TouchableOpacity style={styles.button} onPress={() => setShowCalendar(!showCalendar)}>
+        <TouchableOpacity style={{...styles.button, marginTop: 10, marginBottom: 10}} onPress={() => setShowCalendar(!showCalendar)}>
           <Text style={styles.buttonText}>
             {showCalendar ? "Hide Calendar" : "Show Calendar"}
           </Text>

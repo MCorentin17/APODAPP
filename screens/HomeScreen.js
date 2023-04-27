@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Image, ScrollView, Text, TouchableOpacity } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { getPict } from "../data/Api";
 import styles from "../styles/HomeScreen.styles";
 
-Icon.loadFont();
+
 
 export default function HomeScreen() {
   const [imgList, setImgList] = useState([
@@ -32,10 +31,10 @@ export default function HomeScreen() {
       <React.Fragment key={img.id}>
         <Text style={styles.title}> {img.title}</Text>
         <Image source={{ uri: img.url }} style={styles.img} />
-        <Text style={styles.date}>Image du {img.date} :</Text>
+        <Text style={styles.date}>{img.date}</Text>
         <TouchableOpacity onPress={() => setIsExpanded(!isExpanded)}>
           <Text
-            numberOfLines={isExpanded ? null : 2}
+            numberOfLines={isExpanded ? null : 4}
             style={styles.explanation}
           >
             {img.explanation}

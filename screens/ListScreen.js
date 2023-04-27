@@ -1,13 +1,12 @@
 import React from "react";
-import { Image, ScrollView, Text } from "react-native";
-import { useState, useEffect } from "react"; // import des hooks
-import { getPict } from "../data/Api"; // import de la fonction getPict depuis le fichier Api.js
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context"; // import des composants pour gérer les zones sécurisées
-import Icon from "react-native-vector-icons/MaterialCommunityIcons"; // import d'une icône
+import { Image, ScrollView, Text, View } from "react-native";
+import { useState, useEffect } from "react";
+import { getPict } from "../data/Api";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import styles from "../styles/ListScreen.styles";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 export default function ListScreen() {
-  // Initialisation d'un tableau vide d'images, contenant un objet pour l'exemple
   const [imgList, setImgList] = useState([
     {
       id: 0,
@@ -18,26 +17,20 @@ export default function ListScreen() {
     },
   ]);
 
-  // Chargement de l'icône utilisée dans le composant BottomTab
-  Icon.loadFont();
-
-  // Utilisation du hook useEffect pour exécuter la fonction getPict au montage du composant
   useEffect(() => {
     getPict().then((newImgList) => {
       setImgList(newImgList);
     });
   }, []);
 
-  // Fonction pour afficher la liste d'images
   const renderImgList = () => {
-    // Utilisez la méthode .reverse() pour inverser l'ordre des éléments dans le tableau
     const reversedImgList = [...imgList].reverse();
 
     return reversedImgList.map((img) => (
       <React.Fragment key={img.id}>
         <Text style={styles.title}> {img.title}</Text>
         <Image source={{ uri: img.url }} style={styles.img} />
-        <Text style={styles.text}>Image du {img.date} :</Text>
+        <Text style={styles.text}>{img.date}</Text>
       </React.Fragment>
     ));
   };
@@ -48,6 +41,9 @@ export default function ListScreen() {
         <ScrollView contentContainerStyle={styles.scrollView}>
           {renderImgList()}
         </ScrollView>
+        <View style={styles.scrollIndicator}>
+            <Icon name="chevron-down" size={30} color="white" />
+        </View>
       </SafeAreaView>
     </SafeAreaProvider>
   );

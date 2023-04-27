@@ -2,15 +2,15 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     title: {
-        backgroundColor: "thistle",
-        fontFamily: "serif",
+        backgroundColor: "rgb(11, 61, 145)",
+        color: 'white',
         alignItems: "center",
         fontSize: 30,
         marginTop: 3,
         textAlign: "center",
       },
-      subTittle: {
-        marginTop: 0,
+      button:{
+        marginTop: 20,
       }
   });
   

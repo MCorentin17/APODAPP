@@ -8,14 +8,13 @@ import Search from "../screens/SearchScreen";
 import { SafeAreaView } from "react-native-safe-area-context"; // import des composants pour gérer les zones sécurisées
 import styles from "../styles/Screens.styles";
 
+Icon.loadFont();
+
 // fonction pour l'écran d'accueil "Home"
 function HomeScreen() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Text style={styles.title} alt="APODAPP">APODAPP 🚀</Text>
-      <Appbar.Header>
-        <Appbar.Content title="Home" alt="Home" style={styles.subTittle} />
-      </Appbar.Header>
       <Home />
     </SafeAreaView>
   );
@@ -26,9 +25,6 @@ function ListScreen() {
   return (
     <SafeAreaView style={{flex :1}}>
       <Text style={styles.title} alt="APODAPP">APODAPP 🚀</Text>
-      <Appbar.Header>
-        <Appbar.Content title="List" alt="List" style={styles.subTittle}/>
-      </Appbar.Header>
       <List />
     </SafeAreaView>
   );
@@ -39,9 +35,6 @@ function SearchScreen() {
   return (
     <SafeAreaView style={{flex :1}}>
       <Text style={styles.title} alt="APODAPP">APODAPP 🚀</Text>
-      <Appbar.Header>
-        <Appbar.Content title="Search" alt="Search" style={styles.subTittle}/>
-      </Appbar.Header>
       <Search />
     </SafeAreaView>
   );
@@ -53,7 +46,7 @@ export default function BottomTab() {
   const [routes] = useState([
     { key: "home", title: "Home", icon: "home-outline" },
     { key: "list", title: "List", icon: "view-list-outline" },
-    { key: "search", title: "Search", icon: "calendar-search" },
+    { key: "search", title: "Search", icon: "calendar-search"},
   ]); 
   // utilisation de l'état avec useState pour stocker les différentes routes de navigation
   const renderScene = BottomNavigation.SceneMap({
@@ -64,14 +57,16 @@ export default function BottomTab() {
 
   return (
     <BottomNavigation
-      navigationState={{ index, routes }} // configuration de la navigation avec l'index et les routes
-      onIndexChange={setIndex} // gestion de l'index lorsqu'il change
-      renderScene={renderScene} // affichage de la scène correspondante à l'index
-      barStyle={styles.bottomNavigation} // style de la barre de navigation
-      renderIcon={(
-        { route } // affichage de l'icône correspondante à la route
-      ) => <Icon name={route.icon} size={28} />}
-    />
+    navigationState={{ index, routes }}
+    onIndexChange={setIndex}
+    renderScene={renderScene}
+    barStyle={{ backgroundColor: 'rgb(11, 61, 145)' }}
+    activeColor="white"
+    inactiveColor="white"
+    renderIcon={({ route }) => (
+      <Icon name={route.icon} size={28} color="white" />
+    )}
+  />
   );
 }
 

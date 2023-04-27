@@ -15,13 +15,15 @@ const styles = StyleSheet.create({
     },
     scrollView: {
       backgroundColor: "#fff",
-      alignItems: "center",
+      flexGrow: 1,
       paddingBottom: 50,
     },
     img: {
       width: "90%",
-      height: 350,
+      height: 400,
       borderRadius: 20,
+      marginLeft: "auto", 
+      marginRight: "auto",
     },
     title: {
       fontSize: 25,
@@ -35,6 +37,7 @@ const styles = StyleSheet.create({
       justifyContent: "center",
       marginBottom: 10,
       fontSize: 20,
+      textAlign: "center", 
     },
     explanation: {
       textAlign: "justify",
@@ -71,7 +74,27 @@ const styles = StyleSheet.create({
       fontWeight: "bold",
       borderBottomColor: "black",
       marginTop: 5,
-    }
+    },
+    modalContainer: {
+      flex: 1,
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor: "rgba(0, 0, 0, 0.9)",
+    },
+    modalImg: {
+      width: "100%",
+      height: "100%",
+    },
+    closeButton: {
+      padding: 10,
+      position: "absolute",
+      top: 40,
+      right: 20,
+    },
+    closeButtonText: {
+      color: "#fff",
+      fontWeight: "bold",
+    },
   });  
   
   export default styles;

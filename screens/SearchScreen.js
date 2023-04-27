@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+  Modal,
+} from "react-native";
 import { Calendar } from "react-native-calendars";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { getPictByDate } from "../data/Api";
 import styles from "../styles/SearchScreen.styles";
-
+import Icon from "react-native-vector-icons/FontAwesome";
 
 
 export default function SearchScreen() {
@@ -20,6 +27,7 @@ export default function SearchScreen() {
   ]);
   const [isExpanded, setIsExpanded] = useState(false);
   const [showCalendar, setShowCalendar] = useState(true);
+  const [selectedImg, setSelectedImg] = useState(null);
 
   useEffect(() => {
     if (selectedDate) {
@@ -30,12 +38,21 @@ export default function SearchScreen() {
     }
   }, [selectedDate]);
 
+  const [modalVisible, setModalVisible] = useState(false);
+  const [selectedImage, setSelectedImage] = useState("");
+
+  const handleImagePress = (url) => {
+    setSelectedImage(url);
+    setModalVisible(true);
+  };
+
   const renderImgList = () => {
-    const img = imgList[imgList.length - 1];
-    return (
+    return imgList.map((img) => (
       <React.Fragment key={img.id}>
         <Text style={styles.title}> {img.title}</Text>
-        <Image source={{ uri: img.url }} style={styles.img} />
+        <TouchableOpacity onPress={() => handleImagePress(img.url)}>
+          <Image source={{ uri: img.url }} style={styles.img} />
+        </TouchableOpacity>
         <Text style={styles.date}>{img.date}</Text>
         <TouchableOpacity onPress={() => setIsExpanded(!isExpanded)}>
           <Text
@@ -49,13 +66,16 @@ export default function SearchScreen() {
           </Text>
         </TouchableOpacity>
       </React.Fragment>
-    );
+    ));
   };
 
   return (
     <SafeAreaProvider>
-      <SafeAreaView >
-        <TouchableOpacity style={{...styles.button, marginTop: 10, marginBottom: 10}} onPress={() => setShowCalendar(!showCalendar)}>
+      <SafeAreaView>
+        <TouchableOpacity
+          style={{ ...styles.button, marginTop: 10, marginBottom: 10 }}
+          onPress={() => setShowCalendar(!showCalendar)}
+        >
           <Text style={styles.buttonText}>
             {showCalendar ? "Hide Calendar" : "Show Calendar"}
           </Text>
@@ -66,11 +86,26 @@ export default function SearchScreen() {
         {selectedDate && !showCalendar ? (
           <ScrollView contentContainerStyle={styles.scrollView}>
             {renderImgList()}
-            <View style={{height: 50}} /> 
+            <View style={{ height: 50 }} />
           </ScrollView>
         ) : (
           <Text style={styles.noDateSelected}>Please select a date</Text>
         )}
+        <Modal visible={modalVisible} transparent={true}>
+          <View style={styles.modalContainer}>
+            <Image
+              source={{ uri: selectedImage }}
+              style={styles.modalImg}
+              resizeMode="contain"
+            />
+            <TouchableOpacity
+              style={styles.closeButton}
+              onPress={() => setModalVisible(false)}
+            >
+              <Icon name="times" size={30} color="white" />
+            </TouchableOpacity>
+          </View>
+        </Modal>
       </SafeAreaView>
     </SafeAreaProvider>
   );

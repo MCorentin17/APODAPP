@@ -6,15 +6,14 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   scrollView: {
-    backgroundColor: "#fff",
     flexGrow: 1,
   },
   img: {
-    width: "90%",
-    height: 350,
+    width: 370,
+    height: 400,
     borderRadius: 20,
-    marginLeft: "auto", 
-    marginRight: "auto",
+    marginLeft: 10, 
+    marginRight: 0,
   },
   title: {
     fontSize: 25,

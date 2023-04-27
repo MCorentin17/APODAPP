@@ -26,7 +26,6 @@ export default function ListScreen() {
     },
   ]);
 
-  
   // Load the list of images from the API when the component mounts
   useEffect(() => {
     getPict().then((newImgList) => {
@@ -35,33 +34,53 @@ export default function ListScreen() {
     });
   }, []);
 
+  // State to indicate if the data is being fetched from the API
+  const [isLoading, setIsLoading] = useState(true);
+  // State to control the visibility of the image modal
+  const [modalVisible, setModalVisible] = useState(false);
+  // State to hold the URL of the image that was selected to view in the modal
+  const [selectedImage, setSelectedImage] = useState("");
+  // State to hold the number of images to show
+  const [numOfImgShown, setNumOfImgShown] = useState(5);
 
-// State to indicate if the data is being fetched from the API
-const [isLoading, setIsLoading] = useState(true);
- // State to control the visibility of the image modal
-const [modalVisible, setModalVisible] = useState(false);
-// State to hold the URL of the image that was selected to view in the modal
-const [selectedImage, setSelectedImage] = useState("");
-// Function to handle when an image in the list is pressed and sets the selected image's URL and makes the modal visible
-const handleImagePress = (url) => {
-setSelectedImage(url);
-setModalVisible(true);
-};
+  // Function to load more images when the user reaches the end of the list
+  const handleLoadMore = ({
+    layoutMeasurement,
+    contentOffset,
+    contentSize,
+  }) => {
+    const paddingToBottom = 50;
+    if (
+      layoutMeasurement.height + contentOffset.y >=
+      contentSize.height - paddingToBottom
+    ) {
+      setNumOfImgShown(numOfImgShown + 5);
+    }
+  };
 
-
+  // Function to handle when an image in the list is pressed and sets the selected image's URL and makes the modal visible
+  const handleImagePress = (url) => {
+    setSelectedImage(url);
+    setModalVisible(true);
+  };
 
   // Function to render the list of images
   const renderImgList = () => {
-    // Reverse the list so that the most recent images are displayed first
     const reversedImgList = [...imgList].reverse();
+    const limitedImgList = reversedImgList.slice(0, numOfImgShown);
 
-    return reversedImgList.map((img) => (
-      // TouchableOpacity to make the image clickable
+    // Map through the limited image list and create a TouchableOpacity for each image
+    return limitedImgList.map((img) => (
       <TouchableOpacity key={img.id} onPress={() => handleImagePress(img.url)}>
+        {/* Use React.Fragment to group multiple elements without adding an extra node to the DOM */}
         <React.Fragment>
           <Text style={styles.title}>{img.title}</Text>
-          {/* Display an ActivityIndicator while the data is being fetched */}
-        {isLoading ? <ActivityIndicator size={70} color="darkblue" /> : <Image source={{ uri: img.url }} style={styles.img} />}
+          {/* Display a loading spinner if the image is still loading, otherwise display the image */}
+          {isLoading ? (
+            <ActivityIndicator size={70} color="darkblue" />
+          ) : (
+            <Image source={{ uri: img.url }} style={styles.img} />
+          )}
           <Text style={styles.date}>{img.date}</Text>
         </React.Fragment>
       </TouchableOpacity>
@@ -71,13 +90,17 @@ setModalVisible(true);
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
-      {/* ScrollView to display the list of images  */}
-        <ScrollView contentContainerStyle={styles.scrollView}>
+        {/* ScrollView to display the list of images  */}
+        <ScrollView
+          contentContainerStyle={styles.scrollView}
+          onScroll={({ nativeEvent }) => handleLoadMore(nativeEvent)}
+          scrollEventThrottle={800}
+        >
           {renderImgList()}
         </ScrollView>
         {/* View to display the scroll indicator */}
         <View style={styles.scrollIndicator}>
-          <Icon name="chevron-down" size={30} color="white" />
+          <Icon name="chevron-circle-down" size={40} color="white" />
         </View>
         <Modal visible={modalVisible} transparent={true}>
           <View style={styles.modalContainer}>
@@ -86,12 +109,12 @@ setModalVisible(true);
               style={styles.modalImage}
               resizeMode="contain"
             />
-             {/* TouchableOpacity to close the modal  */}
+            {/* TouchableOpacity to close the modal  */}
             <TouchableOpacity
               style={styles.closeButton}
               onPress={() => setModalVisible(false)}
             >
-              <Icon name="times" size={30} color="white" />
+              <Icon name="times-circle" size={30} color="white" />
             </TouchableOpacity>
           </View>
         </Modal>

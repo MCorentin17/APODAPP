@@ -5,7 +5,7 @@ export async function Api() {
   const apiKey = API_KEY;
   try {
     const response = await fetch(
-      `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&start_date=2023-04-01&concept_tags=True&hd=True`
+      `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&start_date=2023-02-23`
     );
     const data = await response.json();
     return data;

@@ -50,3 +50,4 @@ This application was developed by Corentin MONVILLERS.
 - Improving the overall design and optimize UX/UI
 - Add unit and integration testing to ensure code quality and facilitate long-term maintenance.
 - Test accessibility
+- Improve infinity scroll on a ListPage

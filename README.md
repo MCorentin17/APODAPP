@@ -36,5 +36,6 @@ This application was developed by Corentin MONVILLERS.
 
 ## Roadmap
 
-Future improvements for APODAPP include adding a default state for the search button to return to the default calendar and improving the overall design.
-
+- Future improvements for APODAPP include adding a default state for the search button to return to the default calendar;
+- Improving the overall design.
+- Add unit and integration testing to ensure code quality and facilitate long-term maintenance.

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { StyleSheet, Text } from "react-native";
+import { Text } from "react-native";
 import { Appbar, BottomNavigation } from "react-native-paper"; // import des composants Appbar et BottomNavigation de react-native-paper
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"; // import du composant Icon de react-native-vector-icons
-import List from "./ListPage";
-import Home from "./HomePage"
+import List from "../screens/ListScreen";
+import Home from "../screens/HomeScreen";
+import Search from "../screens/SearchScreen";
 import { SafeAreaView } from "react-native-safe-area-context"; // import des composants pour gérer les zones sécurisées
 import styles from "../styles/Screens.styles";
 
@@ -41,6 +42,7 @@ function SearchScreen() {
       <Appbar.Header>
         <Appbar.Content title="Search" alt="Search" style={styles.subTittle}/>
       </Appbar.Header>
+      <Search />
     </SafeAreaView>
   );
 }
@@ -52,8 +54,8 @@ export default function BottomTab() {
     { key: "home", title: "Home", icon: "home-outline" },
     { key: "list", title: "List", icon: "view-list-outline" },
     { key: "search", title: "Search", icon: "calendar-search" },
-  ]); // utilisation de l'état avec useState pour stocker les différentes routes de navigation
-
+  ]); 
+  // utilisation de l'état avec useState pour stocker les différentes routes de navigation
   const renderScene = BottomNavigation.SceneMap({
     home: HomeScreen,
     list: ListScreen,
@@ -67,8 +69,8 @@ export default function BottomTab() {
       renderScene={renderScene} // affichage de la scène correspondante à l'index
       barStyle={styles.bottomNavigation} // style de la barre de navigation
       renderIcon={(
-        { route, color } // affichage de l'icône correspondante à la route
-      ) => <Icon name={route.icon} color={color} size={28} />}
+        { route } // affichage de l'icône correspondante à la route
+      ) => <Icon name={route.icon} size={28} />}
     />
   );
 }

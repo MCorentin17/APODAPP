@@ -4,17 +4,17 @@ import { useState, useEffect } from "react"; // import des hooks
 import { getPict } from "../data/Api"; // import de la fonction getPict depuis le fichier Api.js
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context"; // import des composants pour gérer les zones sécurisées
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"; // import d'une icône
-import styles from "../styles/ListPage.styles";
+import styles from "../styles/ListScreen.styles";
 
-export default function ListPage() {
+export default function ListScreen() {
   // Initialisation d'un tableau vide d'images, contenant un objet pour l'exemple
   const [imgList, setImgList] = useState([
     {
       id: 0,
-      url:
-        "https://api.nasa.gov/planetary/apod?api_key=oSYEis9hTQWp8hcqfoR1wPqkcoAxQcQGEYUhsiO2&concept_tags=True",
+      url: "url",
       date: "",
       title: "",
+      explanation: "",
     },
   ]);
 
@@ -52,5 +52,3 @@ export default function ListPage() {
     </SafeAreaProvider>
   );
 }
-
-

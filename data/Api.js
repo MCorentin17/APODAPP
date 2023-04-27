@@ -1,6 +1,6 @@
 import {API_KEY} from '@env';
 
-// Call to NASA's API 
+//  Fetch image for April-2023 
 export async function Api() {
   const apiKey = API_KEY
   try {
@@ -14,6 +14,7 @@ export async function Api() {
   }
 }
 
+
 // Function for get a elements of API 
 export const getPict = () => {
   return Api().then((data) => {
@@ -26,4 +27,25 @@ export const getPict = () => {
     }));
     return newImgList;
   });
+};
+
+// Fetch a single image by date
+const fetchImageByDate = (date) => {
+  const apiKey = API_KEY
+  const url = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${date}`;
+  return fetch(url)
+    .then((response) => response.json())
+    .then((data) => ({
+      id: 0,
+      url: data.url,
+      title: data.title,
+      date: data.date,
+      explanation: data.explanation,
+    }))
+    .catch((error) => console.error(error));
+}
+
+// Function to get a single image by date 
+export const getPictByDate = (date) => {
+  return fetchImageByDate(date).then((data) => [data]);
 };

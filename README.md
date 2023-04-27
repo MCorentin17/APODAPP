@@ -13,11 +13,13 @@ APODAPP is a React Native application built with Expo that allows users to view 
 
 To install and run APODAPP, follow these steps:
 
-1. Clone this repository
-2. Run `npm install` to install the necessary dependencies
-3. Create a `.env` file based on the `.env.example` file and fill in the required API key information
-4. Run `npx expo start` to start the application in development mode
-5. Open the application on an emulator or on a physical device by scanning the QR code displayed in the console or by using the Expo Go application.
+1. Clone this repository 
+2. Create a `.env` file based on the `.env.example` file and fill in the required API key information
+3. Get a safe API key [the nasa site](https://api.nasa.gov/)
+4. Create a file .env at the root of the project
+5. Run `npm install` to install the necessary dependencies
+6. Run `npx expo start` to start the application in development mode
+7. Open the application on an emulator or on a physical device by scanning the QR code displayed in the console or by using the Expo Go application.
 
 ## Dependencies
 

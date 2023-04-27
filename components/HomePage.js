@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Image,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-} from "react-native";
+import { Image, ScrollView, Text, TouchableOpacity } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { getPict } from "../data/Api";
@@ -16,8 +11,7 @@ export default function HomePage() {
   const [imgList, setImgList] = useState([
     {
       id: 0,
-      url:
-        "https://api.nasa.gov/planetary/apod?api_key=oSYEis9hTQWp8hcqfoR1wPqkcoAxQcQGEYUhsiO2&concept_tags=True",
+      url: "url",
       date: "",
     },
   ]);

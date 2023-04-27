@@ -5,14 +5,15 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons"; // import d
 import List from "./ListPage";
 import Home from "./HomePage"
 import { SafeAreaView } from "react-native-safe-area-context"; // import des composants pour gérer les zones sécurisées
+import styles from "../styles/Screens.styles";
 
 // fonction pour l'écran d'accueil "Home"
 function HomeScreen() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <Text style={styles.title}>APODAPP</Text>
+      <Text style={styles.title} alt="APODAPP">APODAPP 🚀</Text>
       <Appbar.Header>
-        <Appbar.Content title="Home" />
+        <Appbar.Content title="Home" alt="Home" style={styles.subTittle} />
       </Appbar.Header>
       <Home />
     </SafeAreaView>
@@ -23,9 +24,9 @@ function HomeScreen() {
 function ListScreen() {
   return (
     <SafeAreaView style={{flex :1}}>
-      <Text style={styles.title}>APODAPP</Text>
+      <Text style={styles.title} alt="APODAPP">APODAPP 🚀</Text>
       <Appbar.Header>
-        <Appbar.Content title="List" />
+        <Appbar.Content title="List" alt="List" style={styles.subTittle}/>
       </Appbar.Header>
       <List />
     </SafeAreaView>
@@ -36,9 +37,9 @@ function ListScreen() {
 function SearchScreen() {
   return (
     <SafeAreaView style={{flex :1}}>
-      <Text style={styles.title}>APODAPP</Text>
+      <Text style={styles.title} alt="APODAPP">APODAPP 🚀</Text>
       <Appbar.Header>
-        <Appbar.Content title="Search" />
+        <Appbar.Content title="Search" alt="Search" style={styles.subTittle}/>
       </Appbar.Header>
     </SafeAreaView>
   );
@@ -72,11 +73,4 @@ export default function BottomTab() {
   );
 }
 
-// styles pour les différents éléments du composant
-const styles = StyleSheet.create({
-  title: {
-    backgroundColor: "thistle",
-    fontFamily: "serif",
-    alignItems: "center",
-  },
-});
+

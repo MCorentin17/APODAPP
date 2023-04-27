@@ -20,7 +20,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
     flexWrap: "wrap",
     borderTopColor: "black",
-    borderTopWidth: 2,
+    borderTopWidth: 3,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
   },
   date: {
     fontFamily: "serif",
@@ -32,12 +34,16 @@ const styles = StyleSheet.create({
     textAlign: "center",
     lineHeight: 24,
     borderColor: "black",
+    marginLeft: 9,
+    marginRight: 9,
   },
   read: {
     textAlign: "center",
     fontWeight: "bold",
     borderBottomColor: "black",
-    borderBottomWidth: 2,
+    borderBottomWidth: 3,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
   },
 });
 

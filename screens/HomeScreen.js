@@ -79,7 +79,7 @@ export default function HomeScreen() {
         {/* Add a button to share the image */}
         <TouchableOpacity onPress={onShare} style={styles.shareButton}>
           <Text style={styles.share}>Share</Text>
-          <Icon name="share" size={30} color="white" />
+          <Icon name="share" size={20} color="white" />
         </TouchableOpacity>
       </React.Fragment>
     );

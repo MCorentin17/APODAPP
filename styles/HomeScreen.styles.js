@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   shareButton: {
     position: 'absolute',
     top: 420,
-    right: 10,
+    right: 15,
     backgroundColor: "rgb(11, 61, 145)",
     borderRadius: 5,
     color: "#fff",
@@ -60,6 +60,7 @@ const styles = StyleSheet.create({
   },
   share:{
     color: "white", 
+    fontSize: 12,
   }
 });
 

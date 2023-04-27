@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   },
   img: {
     width: "90%",
-    height: 400,
+    height: 350,
     borderRadius: 20,
     marginLeft: "auto", 
     marginRight: "auto",

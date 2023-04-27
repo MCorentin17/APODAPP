@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Image, ScrollView, Text, TouchableOpacity } from "react-native";
+import { Calendar } from "react-native-calendars";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { getPict } from "../data/Api";
+import { getPictByDate } from "../data/Api";
 import styles from "../styles/HomePage.styles";
 
 Icon.loadFont();
 
 export default function HomePage() {
+  const [selectedDate, setSelectedDate] = useState(null);
   const [imgList, setImgList] = useState([
     {
       id: 0,
       url: "url",
-      date: "",
+      date: "2023-01-01",
       title: "",
       explanation: "",
     },
@@ -21,10 +23,12 @@ export default function HomePage() {
   const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
-    getPict().then((newImgList) => {
-      setImgList(newImgList);
-    });
-  }, []);
+    if (selectedDate) {
+      getPictByDate(selectedDate).then((newImgList) => {
+        setImgList(newImgList);
+      });
+    }
+  }, [selectedDate]);
 
   const renderImgList = () => {
     const img = imgList[imgList.length - 1];
@@ -51,9 +55,14 @@ export default function HomePage() {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
-        <ScrollView contentContainerStyle={styles.scrollView}>
-          {renderImgList()}
-        </ScrollView>
+        <Calendar onDayPress={(day) => setSelectedDate(day.dateString)} />
+        {selectedDate ? (
+          <ScrollView contentContainerStyle={styles.scrollView}>
+            {renderImgList()}
+          </ScrollView>
+        ) : (
+          <Text style={styles.noDateSelected}>Please select a date</Text>
+        )}
       </SafeAreaView>
     </SafeAreaProvider>
   );

@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { StyleSheet, Text } from "react-native";
 import { Appbar, BottomNavigation } from "react-native-paper"; // import des composants Appbar et BottomNavigation de react-native-paper
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"; // import du composant Icon de react-native-vector-icons
-import List from "./ListPage";
-import Home from "./HomePage"
+import List from "../components/ListPage";
+import Home from "../components/HomePage";
+import Search from "../components/SearchPage";
 import { SafeAreaView } from "react-native-safe-area-context"; // import des composants pour gérer les zones sécurisées
 import styles from "../styles/Screens.styles";
 
@@ -41,6 +42,7 @@ function SearchScreen() {
       <Appbar.Header>
         <Appbar.Content title="Search" alt="Search" style={styles.subTittle}/>
       </Appbar.Header>
+      <Search />
     </SafeAreaView>
   );
 }

@@ -11,10 +11,10 @@ export default function ListPage() {
   const [imgList, setImgList] = useState([
     {
       id: 0,
-      url:
-        "https://api.nasa.gov/planetary/apod?api_key=oSYEis9hTQWp8hcqfoR1wPqkcoAxQcQGEYUhsiO2&concept_tags=True",
+      url: "url",
       date: "",
       title: "",
+      explanation: "",
     },
   ]);
 
@@ -52,5 +52,3 @@ export default function ListPage() {
     </SafeAreaProvider>
   );
 }
-
-

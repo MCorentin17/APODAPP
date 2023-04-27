@@ -4,9 +4,9 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { getPict } from "../data/Api";
 import styles from "../styles/HomeScreen.styles";
 
-
-
+// Functional component that displays the home screen
 export default function HomeScreen() {
+  // State to hold the list of images fetched from the API
   const [imgList, setImgList] = useState([
     {
       id: 0,
@@ -17,14 +17,17 @@ export default function HomeScreen() {
     },
   ]);
 
+  // State to control the expansion of the explanation text
   const [isExpanded, setIsExpanded] = useState(false);
 
+  // Fetch the list of images on component mount
   useEffect(() => {
     getPict().then((newImgList) => {
       setImgList(newImgList);
     });
   }, []);
 
+  // Render the list of images with their titles, dates, and explanations
   const renderImgList = () => {
     const img = imgList[imgList.length - 1];
     return (
@@ -47,6 +50,7 @@ export default function HomeScreen() {
     );
   };
 
+  // Return the JSX for the home screen
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>

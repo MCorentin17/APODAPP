@@ -1,8 +1,8 @@
 import {API_KEY} from '@env';
 
-//  Fetch image for April-2023 
+// Function to fetch images from NASA API
 export async function Api() {
-  const apiKey = API_KEY
+  const apiKey = API_KEY;
   try {
     const response = await fetch(
       `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&start_date=2023-04-01&concept_tags=True&hd=True`
@@ -10,12 +10,11 @@ export async function Api() {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error("An error occurred while retrieving data from the API: ", error)
+    console.error("An error occurred while retrieving data from the API: ", error);
   }
 }
 
-
-// Function for get a elements of API 
+// Function to get images from the API
 export const getPict = () => {
   return Api().then((data) => {
     const newImgList = data.map((item, index) => ({
@@ -29,9 +28,10 @@ export const getPict = () => {
   });
 };
 
-// Fetch a single image by date
+
+// Function to fetch an image for a specific date
 const fetchImageByDate = (date) => {
-  const apiKey = API_KEY
+  const apiKey = API_KEY;
   const url = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${date}`;
   return fetch(url)
     .then((response) => response.json())
@@ -43,9 +43,10 @@ const fetchImageByDate = (date) => {
       explanation: data.explanation,
     }))
     .catch((error) => console.error(error));
-}
+};
 
-// Function to get a single image by date 
+// Function to get a single image by date
 export const getPictByDate = (date) => {
   return fetchImageByDate(date).then((data) => [data]);
 };
+

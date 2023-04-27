@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { Text } from "react-native";
-import { Appbar, BottomNavigation } from "react-native-paper"; // import des composants Appbar et BottomNavigation de react-native-paper
-import Icon from "react-native-vector-icons/MaterialCommunityIcons"; // import du composant Icon de react-native-vector-icons
+import { BottomNavigation } from "react-native-paper";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import List from "../screens/ListScreen";
 import Home from "../screens/HomeScreen";
 import Search from "../screens/SearchScreen";
-import { SafeAreaView } from "react-native-safe-area-context"; // import des composants pour gérer les zones sécurisées
+import { SafeAreaView } from "react-native-safe-area-context";
 import styles from "../styles/Screens.styles";
 
+// Load the icon font
 Icon.loadFont();
 
-// fonction pour l'écran d'accueil "Home"
+// Function for the "Home" screen
 function HomeScreen() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -20,7 +21,7 @@ function HomeScreen() {
   );
 }
 
-// fonction pour l'écran de liste "List"
+// Function for the "List" screen
 function ListScreen() {
   return (
     <SafeAreaView style={{flex :1}}>
@@ -30,7 +31,7 @@ function ListScreen() {
   );
 }
 
-// fonction pour l'écran de recherche "Search"
+// Function for the "Search" screen
 function SearchScreen() {
   return (
     <SafeAreaView style={{flex :1}}>
@@ -40,20 +41,19 @@ function SearchScreen() {
   );
 }
 
-// fonction principale pour le composant BottomTab
+// Main function for the BottomTab component
 export default function BottomTab() {
-  const [index, setIndex] = useState(0); // utilisation de l'état avec useState pour gérer l'index de la navigation
+  const [index, setIndex] = useState(0); // state hook to manage the index of the navigation
   const [routes] = useState([
     { key: "home", title: "Home", icon: "home-outline" },
     { key: "list", title: "List", icon: "view-list-outline" },
     { key: "search", title: "Search", icon: "calendar-search"},
-  ]); 
-  // utilisation de l'état avec useState pour stocker les différentes routes de navigation
+  ]); // state hook to store the different navigation routes
   const renderScene = BottomNavigation.SceneMap({
     home: HomeScreen,
     list: ListScreen,
     search: SearchScreen,
-  }); // création d'un objet avec les différentes scènes de navigation
+  }); // create an object with the different navigation scenes
 
   return (
     <BottomNavigation
@@ -69,5 +69,3 @@ export default function BottomTab() {
   />
   );
 }
-
-

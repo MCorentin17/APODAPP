@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 
+// Styles for components
 const styles = StyleSheet.create({
     title: {
         backgroundColor: "rgb(11, 61, 145)",

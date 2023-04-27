@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-// Styles pour les composants
+// Styles for components
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginBottom: 10,
     fontSize: 20,
-    textAlign: "center", // Centrer le texte horizontalement
+    textAlign: "center", 
   },
   text: {
     justifyContent: "center",

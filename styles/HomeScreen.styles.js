@@ -47,6 +47,16 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 10,
   },
+  shareButton: {
+    position: 'absolute',
+    top: 120,
+    right: 10,
+    backgroundColor: "rgb(11, 61, 145)",
+    borderRadius: 5,
+    color: "#fff",
+    paddingHorizontal: 5,
+    paddingVertical: 5,
+  },
 });
 
 export default styles;
